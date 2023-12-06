@@ -1,12 +1,10 @@
-// import java.util.Random;
-
 public class main {
     public static void main(String[] args) {
 
         main main = new main();
 
         // TODO: modify the example # to see the system with vs. without noise
-        int example = 2;
+        int example = 1;
 
         switch (example) {
             case 1: // example without noise
