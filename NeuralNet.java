@@ -21,34 +21,43 @@ public class NeuralNet {
         for (int n = 0; n < allNodes.length; n++) {
             toPrint = toPrint.concat(allNodes[n].toString());
         }
-        String timeString = "\nNeural network at time " + curTime + ": \n";
-        toPrint = timeString.concat(toPrint);
         return toPrint;
     }
 
-    public String startNN() {
+    public void startNN() {
+        System.out.println("Neural network at time 0: ");
+        System.out.println(this.toString());
+
         LinkedHashSet<Node> toUpdate = new LinkedHashSet<Node>();
         LinkedHashSet<Node> activeNodes = new LinkedHashSet<>();
         Random rand = new Random();
+
+        activeNodes.addAll(Arrays.asList(startNodes));
 
         for (int n = 0; n < startNodes.length; n++) {
             for (int sn = 0; sn < startNodes[n].outputs.length; sn++) {
                 startNodes[n].activated = 1;
                 startNodes[n].outputVal = startNodes[n].activated * startNodes[n].weight;
-                startNodes[n].tauCount++;
-                if (startNodes[n].tauCount > startNodes[n].tau) {
-                    startNodes[n].activated = 0;
-                    startNodes[n].tauCount = 0;
-                }
                 if (startNodes[n].outputs != null) {
                     toUpdate.addAll(Arrays.asList(startNodes[n].outputs));
                 }
             }
         }
 
-        activeNodes.addAll(Arrays.asList(startNodes));
 
         for (curTime = 1; curTime < maxTime; curTime++) {
+            Node[] activeArray = new Node[activeNodes.size()];
+            activeNodes.toArray(activeArray);
+
+            for (int a = 0; a < activeArray.length; a++) {
+                activeArray[a].tauCount++;
+                if (activeArray[a].tauCount > activeArray[a].tau) {
+                    activeArray[a].activated = 0;
+                    activeArray[a].tauCount = 0;
+                    activeNodes.remove(activeArray[a]);
+                }
+            }
+
             while (!toUpdate.isEmpty()) {
                 Node[] updateArray = new Node[toUpdate.size()];
                 toUpdate.toArray(updateArray);
@@ -60,22 +69,18 @@ public class NeuralNet {
                 }
                 if (updateNode.inputSum >= updateNode.threshold) {
                     updateNode.activated = 1;
-                    updateNode.tauCount++;
-                    if (updateNode.tauCount > updateNode.tau) {
-                        updateNode.activated = 0;
-                        updateNode.tauCount = 0;
-                    }
+                    activeNodes.add(updateNode);
                 } else {
                     updateNode.activated = 0;
+                    activeNodes.remove(updateNode);
                 }
                 if (updateNode.outputs != null) {
                     toUpdate.addAll(Arrays.asList(updateNode.outputs));
                 }
             }
-            System.out.println("ANN at time " + curTime + " :");
+            System.out.println("Neural network at time " + curTime + ": ");
             System.out.println(this.toString());
         }
-        return this.toString();
     }
 
 }

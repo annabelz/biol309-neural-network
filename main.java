@@ -23,7 +23,7 @@ public class main {
 
         Node outputs3[] = null;
 
-        Node node3 = new Node(2, 2, 8, inputs3, outputs3, 1);
+        Node node3 = new Node(2, 2, 7, inputs3, outputs3, 1);
 
         outputs1[0] = node3;
         outputs2[0] = node3;
@@ -37,7 +37,7 @@ public class main {
 
         NeuralNet NN = new NeuralNet(startNodes, allNodes, t);
 
-        System.out.println(NN.toString());
+        // System.out.println(NN.toString());
 
         NN.startNN();
 
