@@ -5,7 +5,7 @@ public class main {
 
         Node startNodes[] = new Node[2];
         Node allNodes[] = new Node[3];
-        Integer t = 5;
+        Integer t = 4;
 
         Node inputs1[] = null;
         Node outputs1[] = new Node[1];
@@ -35,7 +35,7 @@ public class main {
         startNodes[0] = node1;
         startNodes[1] = node2;
 
-        NeuralNet NN = new NeuralNet(startNodes, allNodes, t);
+        NeuralNet NN = new NeuralNet(startNodes, allNodes, t, false);
 
         // System.out.println(NN.toString());
 

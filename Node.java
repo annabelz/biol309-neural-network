@@ -42,7 +42,8 @@ public class Node {
         }
 
 
-        return "\n-----\n|Node ID: " + id + "\n|" + activatedString + "\n*" + "\n|Sum of inputs: " + inputSum + "\n|Output value: " + outputVal + 
-        "\n|Weight: " + weight + "\n|Threshold: " + threshold + "\n|Node inputs: " + inputString + "\n|Node outputs: " + outputString + "\n|Decay constant: " + tau + "\n|Decay count: " + tauCount + "\n-----\n";
+        return "\n-----\n|Node ID: " + id + "\n|" + activatedString + "\n*" + 
+        "\n|Weight: " + weight + "\n|Threshold: " + threshold + "\n|Node inputs: " + inputString + "\n|Node outputs: " + outputString + "\n|Decay constant: " + tau + 
+        "\n*" + "\n|Sum of inputs: " + inputSum + "\n|Output value: " + outputVal + "\n|Decay count: " + tauCount + "\n-----\n";
     }
 }
