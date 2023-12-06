@@ -1,13 +1,15 @@
+// Node class. A node object represents one neuron.
+
 public class Node {
     Integer id;
     int weight;
     int threshold;
-    Node[] inputs;
-    Node[] outputs;
-    int inputSum = 0;
-    int activated = 0;
-    int outputVal = 0;
-    int tau = 0;
+    Node[] inputs; // list of input connections
+    Node[] outputs; // list of output connections
+    int inputSum = 0; // sum of inputs
+    int activated = 0; // if the neuron fires, this is 1
+    int outputVal = 0; 
+    int tau = 0; // time decay constant
     int tauCount = 0;
 
     public Node(int nodeNumber, int nodeWeight, int nodeThreshold, Node[] nodeInputs, Node[] nodeOutputs, int nodeTau) {
