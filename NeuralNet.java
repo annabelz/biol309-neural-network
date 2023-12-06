@@ -118,5 +118,4 @@ public class NeuralNet {
             System.out.println(this.toString());
         }
     }
-
 }
