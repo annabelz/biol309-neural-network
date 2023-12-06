@@ -41,7 +41,7 @@ public class NeuralNet {
         LinkedHashSet<Node> activeNodes = new LinkedHashSet<>();
 
         // noise in the system is implemented by generating a number between 0-6 and
-        // reducing 3, so a range of [-3, 3] added noise
+        // reducing 3, so a range of [-3, 3]
         Random noise = new Random();
 
         // add all start nodes to set of activated nodes
@@ -51,6 +51,7 @@ public class NeuralNet {
         // weight and store its output connections in toUpdate
         for (int n = 0; n < startNodes.length; n++) {
             startNodes[n].activated = 1;
+            startNodes[n].inputSum = startNodes[n].threshold;
             startNodes[n].outputVal = startNodes[n].weight;
             if (startNodes[n].outputs != null) {
                 toUpdate.addAll(Arrays.asList(startNodes[n].outputs));
@@ -58,24 +59,21 @@ public class NeuralNet {
         }
 
         // loop through the system for the designated maxTime
-        for (curTime = 1; curTime < maxTime; curTime++) {
+        for (curTime = 1; curTime <= maxTime; curTime++) {
 
             // update each of the currently active nodes according to time decay constant
             Node[] activeArray = new Node[activeNodes.size()];
             activeNodes.toArray(activeArray);
 
             for (int a = 0; a < activeArray.length; a++) {
-                activeArray[a].tauCount++;
-                if (activeArray[a].tauCount > activeArray[a].tau) {
-                    activeArray[a].activated = 0;
-                    activeArray[a].tauCount = 0;
-                    activeArray[a].outputVal = 0;
-                    activeArray[a].inputSum = 0;
-                    activeNodes.remove(activeArray[a]);
-                }
-                if (activeArray[a].tauCount > 0) {
-                    activeArray[a].inputSum = 0;
-                }
+                Node activeNode = activeArray[a];
+
+                // increase tauCount of each activated node
+                activeNode.tauCount++;
+
+                // update node based on tauCount
+                activeNode.updateTauCount(activeNodes);
+                activeNode.updateActivate(activeNodes);
             }
 
             Node[] updateArray = new Node[toUpdate.size()];
@@ -85,29 +83,22 @@ public class NeuralNet {
             for (int u = 0; u < updateArray.length; u++) {
 
                 // node to be updated
-                Node updateNode = updateArray[0];
-                toUpdate.remove(updateArray[0]);
+                Node updateNode = updateArray[u];
+                toUpdate.remove(updateArray[u]);
 
                 // loop through the inputs to the node, update its inputSum property
-                for (int sn = 0; sn < updateNode.inputs.length; sn++) {
-                    updateNode.inputSum = updateNode.inputSum + updateNode.inputs[sn].outputVal;
-                    // add noise
-                    if (nnNoise) {
-                        updateNode.inputSum += noise.nextInt(7) - 3;
+                if (updateNode.inputs != null) {
+                    for (int sn = 0; sn < updateNode.inputs.length; sn++) {
+                        updateNode.updateInputSum();
+                        // add noise
+                        if (nnNoise) {
+                            updateNode.inputSum += noise.nextInt(7) - 3;
+                        }
                     }
                 }
-                // if the new inputSum is greater than the threshold, add the node to the set of
-                // activeNodes and update
-                if (updateNode.inputSum >= updateNode.threshold) {
-                    updateNode.activated = 1;
-                    updateNode.outputVal = updateNode.weight;
-                    activeNodes.add(updateNode);
-                } else { // if the node isn't activated, remove it from the set of activeNodes
-                    updateNode.activated = 0;
-                    updateNode.outputVal = 0;
-                    updateNode.inputSum = 0;
-                    activeNodes.remove(updateNode);
-                }
+                // update whether the node was activated or not
+                updateNode.updateActivate(activeNodes);
+
                 // if this node has output nodes, add those to the set of nodes toUpdate
                 if (updateNode.outputs != null) {
                     toUpdate.addAll(Arrays.asList(updateNode.outputs));
