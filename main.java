@@ -5,7 +5,7 @@ public class main {
 
         // TODO: modify the example # to see the system with vs. without noise
         int example = 1; // refer to the switch below for the available examples
-        int ex2noise = 0; // amount of noise to add to ex2 (MUST BE A POSITIVE INTEGER)
+        int ex2noise = 10; // amount of noise to add to ex2 (MUST BE A POSITIVE INTEGER)
 
         switch (example) {
             case 1: // example without noise
