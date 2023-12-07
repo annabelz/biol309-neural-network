@@ -5,14 +5,14 @@ import java.util.Random;
 
 public class NeuralNet {
 
-    boolean nnNoise; // indicates whether or not the network is implemented with noise (true if
+    int nnNoise; // indicates whether or not the network is implemented with noise (true if
                      // noisy)
     Node[] startNodes; // list of nodes that are active when the simulation begins
     Node[] allNodes; // list of all nodes in the network
     int maxTime; // number of times to loop through the system
     int curTime = 0;
 
-    public NeuralNet(Node[] start, Node[] all, int t, boolean noise) {
+    public NeuralNet(Node[] start, Node[] all, int t, int noise) {
         startNodes = start;
         allNodes = all;
         maxTime = t;
@@ -91,8 +91,8 @@ public class NeuralNet {
                     for (int sn = 0; sn < updateNode.inputs.length; sn++) {
                         updateNode.updateInputSum();
                         // add noise
-                        if (nnNoise) {
-                            updateNode.inputSum += noise.nextInt(7) - 3;
+                        if (nnNoise > 0) {
+                            updateNode.inputSum += noise.nextInt(nnNoise) - nnNoise/2;
                         }
                     }
                 }
