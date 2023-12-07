@@ -110,7 +110,7 @@ Neural network at time 1:
 
 -----
 |Node ID: 2
-|Active
+|Inactive
 *
 |Weight: -2
 |Threshold: 5
@@ -118,8 +118,8 @@ Neural network at time 1:
 |Node outputs: 3
 |Decay constant: 1
 *
-|Sum of inputs: 5
-|Output value: -2
+|Sum of inputs: 4
+|Output value: 0
 |Decay count: 0
 -----
 
@@ -140,7 +140,7 @@ Neural network at time 1:
 
 -----
 |Node ID: 4
-|Active
+|Inactive
 *
 |Weight: 6
 |Threshold: 1
@@ -148,8 +148,8 @@ Neural network at time 1:
 |Node outputs: 3
 |Decay constant: 3
 *
-|Sum of inputs: 2
-|Output value: 6
+|Sum of inputs: -3
+|Output value: 0
 |Decay count: 0
 -----
 
@@ -187,7 +187,7 @@ Neural network at time 2:
 
 -----
 |Node ID: 2
-|Active
+|Inactive
 *
 |Weight: -2
 |Threshold: 5
@@ -195,9 +195,9 @@ Neural network at time 2:
 |Node outputs: 3
 |Decay constant: 1
 *
-|Sum of inputs: 5
-|Output value: -2
-|Decay count: 1
+|Sum of inputs: 4
+|Output value: 0
+|Decay count: 0
 -----
 
 -----
@@ -210,14 +210,14 @@ Neural network at time 2:
 |Node outputs: 01
 |Decay constant: 3
 *
-|Sum of inputs: 8
+|Sum of inputs: 7
 |Output value: 7
 |Decay count: 0
 -----
 
 -----
 |Node ID: 4
-|Active
+|Inactive
 *
 |Weight: 6
 |Threshold: 1
@@ -225,9 +225,9 @@ Neural network at time 2:
 |Node outputs: 3
 |Decay constant: 3
 *
-|Sum of inputs: 2
-|Output value: 6
-|Decay count: 1
+|Sum of inputs: -3
+|Output value: 0
+|Decay count: 0
 -----
 
 Neural network at time 3:
@@ -272,7 +272,7 @@ Neural network at time 3:
 |Node outputs: 3
 |Decay constant: 1
 *
-|Sum of inputs: 0
+|Sum of inputs: 4
 |Output value: 0
 |Decay count: 0
 -----
@@ -287,14 +287,14 @@ Neural network at time 3:
 |Node outputs: 01
 |Decay constant: 3
 *
-|Sum of inputs: 8
+|Sum of inputs: 7
 |Output value: 7
 |Decay count: 1
 -----
 
 -----
 |Node ID: 4
-|Active
+|Inactive
 *
 |Weight: 6
 |Threshold: 1
@@ -302,9 +302,9 @@ Neural network at time 3:
 |Node outputs: 3
 |Decay constant: 3
 *
-|Sum of inputs: 2
-|Output value: 6
-|Decay count: 2
+|Sum of inputs: -3
+|Output value: 0
+|Decay count: 0
 -----
 
 Neural network at time 4:
@@ -349,7 +349,7 @@ Neural network at time 4:
 |Node outputs: 3
 |Decay constant: 1
 *
-|Sum of inputs: 0
+|Sum of inputs: 2
 |Output value: 0
 |Decay count: 0
 -----
@@ -364,14 +364,14 @@ Neural network at time 4:
 |Node outputs: 01
 |Decay constant: 3
 *
-|Sum of inputs: 8
+|Sum of inputs: 7
 |Output value: 7
 |Decay count: 2
 -----
 
 -----
 |Node ID: 4
-|Active
+|Inactive
 *
 |Weight: 6
 |Threshold: 1
@@ -379,9 +379,9 @@ Neural network at time 4:
 |Node outputs: 3
 |Decay constant: 3
 *
-|Sum of inputs: 4
-|Output value: 6
-|Decay count: 3
+|Sum of inputs: -6
+|Output value: 0
+|Decay count: 0
 -----
 
 Neural network at time 5:
@@ -426,14 +426,14 @@ Neural network at time 5:
 |Node outputs: 3
 |Decay constant: 1
 *
-|Sum of inputs: 0
+|Sum of inputs: 2
 |Output value: 0
 |Decay count: 0
 -----
 
 -----
 |Node ID: 3
-|Active
+|Inactive
 *
 |Weight: 7
 |Threshold: 5
@@ -441,7 +441,7 @@ Neural network at time 5:
 |Node outputs: 01
 |Decay constant: 3
 *
-|Sum of inputs: 8
+|Sum of inputs: -1
 |Output value: 7
 |Decay count: 3
 -----
@@ -456,7 +456,7 @@ Neural network at time 5:
 |Node outputs: 3
 |Decay constant: 3
 *
-|Sum of inputs: 0
+|Sum of inputs: -6
 |Output value: 0
 |Decay count: 0
 -----
