@@ -5,17 +5,17 @@ public class main {
 
         // TODO: modify the example # to see the system with vs. without noise
         int example = 1; // refer to the switch below for the available examples
-        int ex2noise = 10; // amount of noise to add to ex2 (MUST BE A POSITIVE INTEGER)
+        int ex3noise = 10; // amount of noise to add to ex3 (MUST BE A POSITIVE INTEGER)
 
         switch (example) {
             case 1: // example without noise
                 main.ex1();
                 break;
-            case 2: // example with 5 nodes and noise
-                main.ex2(ex2noise);
+            case 2: // example with 5 nodes
+                main.ex2();
                 break;
-            case 3: // example with 5 nodes
-                main.ex3();
+            case 3: // example with 5 nodes and noise
+                main.ex3(ex3noise);
                 break;
         }
     }
@@ -55,7 +55,7 @@ public class main {
         NN.startNN();
     }
 
-    public void ex2(int noise) {
+    public void ex2() {
         System.out.println("Simulating case 2:");
         // create arguments for NeuralNet constructor
         Node startNodes[] = new Node[2];
@@ -101,11 +101,11 @@ public class main {
         startNodes[0] = node1;
         startNodes[1] = node2;
 
-        NeuralNet NN = new NeuralNet(startNodes, allNodes, t, noise);
+        NeuralNet NN = new NeuralNet(startNodes, allNodes, t, 0);
         NN.startNN();
     }
 
-    public void ex3() {
+    public void ex3(int noise) {
         System.out.println("Simulating case 3:");
         // create arguments for NeuralNet constructor
         Node startNodes[] = new Node[2];
@@ -151,7 +151,7 @@ public class main {
         startNodes[0] = node1;
         startNodes[1] = node2;
 
-        NeuralNet NN = new NeuralNet(startNodes, allNodes, t, 0);
+        NeuralNet NN = new NeuralNet(startNodes, allNodes, t, noise);
         NN.startNN();
     }
 }
