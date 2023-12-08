@@ -61,21 +61,6 @@ public class NeuralNet {
         // loop through the system for the designated maxTime
         for (curTime = 1; curTime <= maxTime; curTime++) {
 
-            // update each of the currently active nodes according to time decay constant
-            Node[] activeArray = new Node[activeNodes.size()];
-            activeNodes.toArray(activeArray);
-
-            for (int a = 0; a < activeArray.length; a++) {
-                Node activeNode = activeArray[a];
-
-                // increase tauCount of each activated node
-                activeNode.tauCount++;
-
-                // update node based on tauCount
-                activeNode.updateTauCount(activeNodes);
-                activeNode.updateActivate(activeNodes);
-            }
-
             Node[] updateArray = new Node[toUpdate.size()];
             toUpdate.toArray(updateArray);
 
@@ -103,6 +88,21 @@ public class NeuralNet {
                 if (updateNode.outputs != null) {
                     toUpdate.addAll(Arrays.asList(updateNode.outputs));
                 }
+            }
+
+            // update each of the currently active nodes according to time decay constant
+            Node[] activeArray = new Node[activeNodes.size()];
+            activeNodes.toArray(activeArray);
+
+            for (int a = 0; a < activeArray.length; a++) {
+                Node activeNode = activeArray[a];
+
+                // increase tauCount of each activated node
+                activeNode.tauCount++;
+
+                // update node based on tauCount
+                activeNode.updateTauCount(activeNodes);
+                activeNode.updateActivate(activeNodes);
             }
 
             System.out.println("Neural network at time " + curTime + ": ");

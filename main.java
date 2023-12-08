@@ -62,11 +62,13 @@ public class main {
         Node allNodes[] = new Node[5];
         Integer t = 5;
         // create arguments for Node constructor for node1
+        Node inputs1[] = new Node[1];
         Node outputs1[] = new Node[1];
-        Node node1 = new Node(0, 5, 4, null, outputs1, 2);
+        Node node1 = new Node(0, 5, 7, inputs1, outputs1, 2);
         // create arguments for Node constructor for node2
+        Node inputs2[] = new Node[1];
         Node outputs2[] = new Node[1];
-        Node node2 = new Node(1, 2, 3, null, outputs2, 4);
+        Node node2 = new Node(1, 2, 3, inputs2, outputs2, 4);
         // create arguments for Node constructor for node3
         Node inputs3[] = new Node[1];
         Node outputs3[] = new Node[1];
@@ -74,7 +76,7 @@ public class main {
         // create arguments for Node constructor for node3
         Node inputs4[] = new Node[2];
         Node outputs4[] = new Node[2];
-        Node node4 = new Node(3, 7, 3, inputs4, outputs4, 3);
+        Node node4 = new Node(3, 7, 5, inputs4, outputs4, 3);
         // create arguments for Node constructor for node3
         Node inputs5[] = new Node[1];
         Node outputs5[] = new Node[1];
@@ -87,6 +89,8 @@ public class main {
         outputs4[1] = node2;
         outputs5[0] = node4;
         // set inputs
+        inputs1[0] = node4;
+        inputs2[0] = node4;
         inputs3[0] = node1;
         inputs4[0] = node3;
         inputs4[1] = node5;
@@ -112,11 +116,13 @@ public class main {
         Node allNodes[] = new Node[5];
         Integer t = 5;
         // create arguments for Node constructor for node1
+        Node inputs1[] = new Node[1];
         Node outputs1[] = new Node[1];
-        Node node1 = new Node(0, 5, 7, null, outputs1, 2);
+        Node node1 = new Node(0, 5, 7, inputs1, outputs1, 2);
         // create arguments for Node constructor for node2
+        Node inputs2[] = new Node[1];
         Node outputs2[] = new Node[1];
-        Node node2 = new Node(1, 2, 3, null, outputs2, 4);
+        Node node2 = new Node(1, 2, 3, inputs2, outputs2, 4);
         // create arguments for Node constructor for node3
         Node inputs3[] = new Node[1];
         Node outputs3[] = new Node[1];
@@ -137,6 +143,8 @@ public class main {
         outputs4[1] = node2;
         outputs5[0] = node4;
         // set inputs
+        inputs1[0] = node4;
+        inputs2[0] = node4;
         inputs3[0] = node1;
         inputs4[0] = node3;
         inputs4[1] = node5;
